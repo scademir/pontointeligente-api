@@ -2,5 +2,9 @@ language: java
 jdk:
   - oraclejdk8
 
-services:
-  - mysql
+[server]
+wait_timeout=28800
+
+before_script:
+  - echo -e "[server]\nwait_timeout=28800" | sudo tee -a /etc/mysql/my.cnf
+  - sudo service mysql restart
